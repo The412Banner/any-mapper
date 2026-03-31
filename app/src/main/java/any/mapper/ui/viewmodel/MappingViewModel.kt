@@ -44,6 +44,19 @@ class MappingViewModel @Inject constructor(
         repository.duplicateProfile(profileId, newName)
     }
 
+    fun quickMapStickToMouse(rightStick: Boolean) = viewModelScope.launch {
+        val profileId = activeProfile.value?.id ?: return@launch
+        val axisX = if (rightStick) android.view.MotionEvent.AXIS_Z else android.view.MotionEvent.AXIS_X
+        val axisY = if (rightStick) android.view.MotionEvent.AXIS_RZ else android.view.MotionEvent.AXIS_Y
+        val label = if (rightStick) "Right Stick" else "Left Stick"
+        repository.insertMapping(Mapping(profileId = profileId, label = "$label → Mouse X",
+            sourceType = SourceType.AXIS_FULL, sourceCode = axisX,
+            targetType = TargetType.MOUSE_MOVE_X, sensitivity = 2f))
+        repository.insertMapping(Mapping(profileId = profileId, label = "$label → Mouse Y",
+            sourceType = SourceType.AXIS_FULL, sourceCode = axisY,
+            targetType = TargetType.MOUSE_MOVE_Y, sensitivity = 2f))
+    }
+
     fun createQuickWinlatorProfile() = viewModelScope.launch {
         val mappings = listOf(
             Mapping(profileId = 0, label = "Left Stick Up → W", sourceType = SourceType.AXIS_POS, sourceCode = android.view.MotionEvent.AXIS_Y.inv(), targetType = TargetType.KEY, targetKeyCode = android.view.KeyEvent.KEYCODE_W),

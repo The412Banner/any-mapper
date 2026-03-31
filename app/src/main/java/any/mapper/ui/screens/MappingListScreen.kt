@@ -28,17 +28,65 @@ fun MappingListScreen(
 ) {
     val mappings by vm.mappings.collectAsState()
     var deletingMapping by remember { mutableStateOf<Mapping?>(null) }
+    var showQuickMenu by remember { mutableStateOf(false) }
 
     val buttonMappings = mappings.filter { it.sourceType == SourceType.BUTTON }
     val axisMappings = mappings.filter { it.sourceType != SourceType.BUTTON }
 
     Scaffold(
         floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = onAddMapping,
-                icon = { Icon(Icons.Default.Add, null) },
-                text = { Text(stringResource(R.string.mappings_add)) }
-            )
+            Column(horizontalAlignment = Alignment.End) {
+                // Quick-map stick menu
+                if (showQuickMenu) {
+                    SmallFloatingActionButton(
+                        onClick = { vm.quickMapStickToMouse(rightStick = false); showQuickMenu = false },
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Default.Mouse, null, modifier = Modifier.size(18.dp))
+                            Text("Left Stick → Mouse", style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    SmallFloatingActionButton(
+                        onClick = { vm.quickMapStickToMouse(rightStick = true); showQuickMenu = false },
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Default.Mouse, null, modifier = Modifier.size(18.dp))
+                            Text("Right Stick → Mouse", style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    SmallFloatingActionButton(
+                        onClick = { onAddMapping(); showQuickMenu = false },
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Default.Add, null, modifier = Modifier.size(18.dp))
+                            Text("Map a button", style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                }
+                ExtendedFloatingActionButton(
+                    onClick = { showQuickMenu = !showQuickMenu },
+                    icon = { Icon(if (showQuickMenu) Icons.Default.Close else Icons.Default.Add, null) },
+                    text = { Text(if (showQuickMenu) "Close" else stringResource(R.string.mappings_add)) }
+                )
+            }
         }
     ) { padding ->
         if (mappings.isEmpty()) {

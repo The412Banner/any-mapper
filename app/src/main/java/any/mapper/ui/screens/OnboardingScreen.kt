@@ -3,6 +3,8 @@ package any.mapper.ui.screens
 
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
@@ -20,8 +22,10 @@ import any.mapper.R
 
 @Composable
 fun OnboardingScreen(onComplete: () -> Unit) {
-    var step by remember { mutableIntStateOf(0) }
     val context = LocalContext.current
+    val needsRestrictedStep = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+    val totalSteps = if (needsRestrictedStep) 4 else 3
+    var step by remember { mutableIntStateOf(0) }
 
     Column(
         modifier = Modifier.fillMaxSize().padding(32.dp),
@@ -32,8 +36,8 @@ fun OnboardingScreen(onComplete: () -> Unit) {
 
         AnimatedContent(targetState = step, label = "onboarding") { s ->
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                when (s) {
-                    0 -> {
+                when {
+                    s == 0 -> {
                         Icon(Icons.Default.SportsEsports, null, modifier = Modifier.size(80.dp),
                             tint = MaterialTheme.colorScheme.primary)
                         Spacer(Modifier.height(24.dp))
@@ -44,7 +48,31 @@ fun OnboardingScreen(onComplete: () -> Unit) {
                             style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    1 -> {
+                    needsRestrictedStep && s == 1 -> {
+                        Icon(Icons.Default.Security, null, modifier = Modifier.size(80.dp),
+                            tint = MaterialTheme.colorScheme.primary)
+                        Spacer(Modifier.height(24.dp))
+                        Text(stringResource(R.string.onboarding_title_restricted),
+                            style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center)
+                        Spacer(Modifier.height(16.dp))
+                        Text(stringResource(R.string.onboarding_desc_restricted),
+                            style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Spacer(Modifier.height(24.dp))
+                        Button(onClick = {
+                            val uri = Uri.fromParts("package", context.packageName, null)
+                            context.startActivity(
+                                Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri).apply {
+                                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                }
+                            )
+                        }) {
+                            Icon(Icons.Default.OpenInNew, null)
+                            Spacer(Modifier.width(8.dp))
+                            Text(stringResource(R.string.onboarding_open_app_info))
+                        }
+                    }
+                    (!needsRestrictedStep && s == 1) || (needsRestrictedStep && s == 2) -> {
                         Icon(Icons.Default.Accessibility, null, modifier = Modifier.size(80.dp),
                             tint = MaterialTheme.colorScheme.primary)
                         Spacer(Modifier.height(24.dp))
@@ -65,7 +93,7 @@ fun OnboardingScreen(onComplete: () -> Unit) {
                             Text(stringResource(R.string.onboarding_grant))
                         }
                     }
-                    2 -> {
+                    else -> {
                         Icon(Icons.Default.Gamepad, null, modifier = Modifier.size(80.dp),
                             tint = MaterialTheme.colorScheme.primary)
                         Spacer(Modifier.height(24.dp))
@@ -82,15 +110,8 @@ fun OnboardingScreen(onComplete: () -> Unit) {
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                repeat(3) { i ->
-                    Box(
-                        modifier = Modifier.size(if (i == step) 12.dp else 8.dp)
-                            .let {
-                                if (i == step)
-                                    it.then(Modifier.padding(0.dp))
-                                else it
-                            }
-                    ) {
+                repeat(totalSteps) { i ->
+                    Box(modifier = Modifier.size(if (i == step) 12.dp else 8.dp)) {
                         Surface(
                             modifier = Modifier.fillMaxSize(),
                             shape = MaterialTheme.shapes.small,
@@ -103,8 +124,8 @@ fun OnboardingScreen(onComplete: () -> Unit) {
             Spacer(Modifier.height(24.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 TextButton(onClick = onComplete) { Text(stringResource(R.string.onboarding_skip)) }
-                Button(onClick = { if (step < 2) step++ else onComplete() }) {
-                    Text(if (step < 2) stringResource(R.string.onboarding_next) else stringResource(R.string.onboarding_finish))
+                Button(onClick = { if (step < totalSteps - 1) step++ else onComplete() }) {
+                    Text(if (step < totalSteps - 1) stringResource(R.string.onboarding_next) else stringResource(R.string.onboarding_finish))
                 }
             }
         }

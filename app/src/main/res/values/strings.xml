@@ -27,6 +27,9 @@
     <!-- Onboarding -->
     <string name="onboarding_title_1">Welcome to Any Mapper</string>
     <string name="onboarding_desc_1">Map any gamepad button or analog stick to keyboard keys or mouse actions. Works with Winlator, GameNative, and GameHub.</string>
+    <string name="onboarding_title_restricted">Allow Restricted Settings</string>
+    <string name="onboarding_desc_restricted">Android 13+ blocks sideloaded apps from using Accessibility by default.\n\n1. Tap \"Open App Info\" below\n2. Tap the ⋮ menu (top-right)\n3. Tap \"Allow restricted settings\"\n4. Come back and tap Next</string>
+    <string name="onboarding_open_app_info">Open App Info</string>
     <string name="onboarding_title_2">Grant Accessibility Permission</string>
     <string name="onboarding_desc_2">Any Mapper needs Accessibility Service permission to intercept controller input in the background. No personal data is collected.</string>
     <string name="onboarding_grant">Open Accessibility Settings</string>

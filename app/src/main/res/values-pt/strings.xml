@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Serviço de Controle Any Mapper</string>
+    <string name="accessibility_service_description">Any Mapper intercepta entradas do controle e remapeia botões e analógicos para teclado e mouse.</string>
+    <string name="nav_home">Início</string><string name="nav_mappings">Mapeamentos</string><string name="nav_test">Teste</string><string name="nav_profiles">Perfis</string><string name="nav_settings">Configurações</string>
+    <string name="home_service_enabled">Mapper Ativo</string><string name="home_service_disabled">Mapper Desligado</string><string name="home_tap_to_enable">Toque para ativar</string><string name="home_tap_to_disable">Toque para desativar</string>
+    <string name="home_no_controller">Nenhum controle detectado</string><string name="home_active_profile">Perfil Ativo</string><string name="home_mappings_active">%1$d mapeamentos ativos</string>
+    <string name="home_analog_warning">Mapeamento analógico requer Android 13+</string><string name="home_accessibility_off">Permissão de acessibilidade necessária</string><string name="home_grant_permission">Conceder Permissão</string>
+    <string name="onboarding_title_1">Bem-vindo ao Any Mapper</string><string name="onboarding_desc_1">Mapeie botões e analógicos do controle para teclado ou mouse. Compatível com Winlator, GameNative e GameHub.</string>
+    <string name="onboarding_title_2">Conceder Permissão de Acessibilidade</string><string name="onboarding_desc_2">Any Mapper precisa do serviço de acessibilidade para interceptar entradas em segundo plano.</string><string name="onboarding_grant">Abrir Configurações de Acessibilidade</string>
+    <string name="onboarding_title_3">Conectar Controle</string><string name="onboarding_desc_3">Conecte um controle Bluetooth ou USB OTG. Compatível com Xbox, PlayStation e genéricos.</string><string name="onboarding_finish">Começar</string><string name="onboarding_skip">Pular</string><string name="onboarding_next">Próximo</string>
+    <string name="mappings_title">Mapeamentos</string><string name="mappings_empty">Sem mapeamentos.\nToque + para adicionar.</string><string name="mappings_section_buttons">Botões</string><string name="mappings_section_axes">Analógicos</string>
+    <string name="mappings_add">Adicionar Mapeamento</string><string name="mappings_delete_confirm">Excluir mapeamento?</string><string name="mappings_deleted">Mapeamento excluído</string><string name="mappings_undo">Desfazer</string>
+    <string name="editor_title_new">Novo Mapeamento</string><string name="editor_title_edit">Editar Mapeamento</string><string name="editor_step1_title">Pressione um botão</string><string name="editor_step1_desc">Pressione qualquer botão ou mova um analógico</string><string name="editor_step1_waiting">Aguardando entrada…</string>
+    <string name="editor_step2_title">Escolher destino</string><string name="editor_step2_key">Tecla do Teclado</string><string name="editor_step2_mouse">Ação do Mouse</string><string name="editor_step3_title">Configurar</string>
+    <string name="editor_label_hint">Rótulo (opcional)</string><string name="editor_deadzone">Zona Morta</string><string name="editor_sensitivity">Sensibilidade</string>
+    <string name="editor_hold_behavior">Comportamento de pressão</string><string name="editor_hold_held">Mantido</string><string name="editor_hold_toggle">Alternar</string><string name="editor_hold_single">Disparo único</string>
+    <string name="editor_curve">Curva de resposta</string><string name="editor_curve_linear">Linear</string><string name="editor_curve_quadratic">Quadrática</string><string name="editor_curve_cubic">Cúbica</string>
+    <string name="editor_save">Salvar</string><string name="editor_cancel">Cancelar</string>
+    <string name="test_title">Teste de Controle</string><string name="test_no_controller">Conecte um controle para testar</string><string name="test_mapped_to">Mapeado para: %1$s</string><string name="test_not_mapped">Não mapeado</string><string name="test_reset_cursor">Resetar Cursor</string>
+    <string name="profiles_title">Perfis</string><string name="profiles_new">Novo Perfil</string><string name="profiles_name_hint">Nome do perfil</string><string name="profiles_auto_activate">Ativa automaticamente para: %1$s</string>
+    <string name="profiles_set_package">Definir app de ativação automática</string><string name="profiles_package_hint">Nome do pacote (ex: com.winlator)</string><string name="profiles_rename">Renomear</string><string name="profiles_duplicate">Duplicar</string><string name="profiles_delete">Excluir</string>
+    <string name="profiles_delete_confirm">Excluir perfil \"%1$s\"?</string><string name="profiles_active">Ativo</string><string name="profiles_empty">Sem perfis.\nToque +.</string>
+    <string name="settings_title">Configurações</string><string name="settings_mouse_section">Mouse</string><string name="settings_mouse_mode">Modo de injeção do mouse</string><string name="settings_mouse_mode_touch">Modo Touch</string><string name="settings_mouse_mode_mouse">Modo Mouse</string>
+    <string name="settings_mouse_mode_desc">Touch: gestos. Mouse: eventos de hardware (melhor para Wine).</string><string name="settings_default_sensitivity">Sensibilidade padrão</string><string name="settings_default_deadzone">Zona morta padrão</string>
+    <string name="settings_service_section">Serviço</string><string name="settings_start_on_boot">Iniciar com o sistema</string><string name="settings_vibrate_on_map">Vibrar ao acionar mapeamento</string>
+    <string name="settings_display_section">Exibição</string><string name="settings_theme">Tema</string><string name="settings_language">Idioma</string>
+    <string name="settings_compat_section">Configuração Rápida</string><string name="settings_compat_desc">Criar perfis para apps Wine populares</string><string name="settings_compat_winlator">Criar Perfil FPS Winlator</string>
+    <string name="settings_about_section">Sobre</string><string name="settings_version">Versão %1$s</string>
+    <string name="notification_title">Any Mapper</string><string name="notification_active">Ativo — %1$s</string><string name="notification_disabled">Desativado</string><string name="notification_action_disable">Desativar</string><string name="notification_action_enable">Ativar</string>
+    <string name="ok">OK</string><string name="cancel">Cancelar</string><string name="save">Salvar</string><string name="delete">Excluir</string><string name="enable">Ativar</string><string name="disable">Desativar</string>
+    <string name="rename">Renomear</string><string name="duplicate">Duplicar</string><string name="yes">Sim</string><string name="no">Não</string><string name="arrow">→</string><string name="unknown">Desconhecido</string>
+</resources>

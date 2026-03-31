@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Any Mapper コントローラーサービス</string>
+    <string name="accessibility_service_description">Any Mapperはコントローラーの入力を傍受し、ボタンとアナログスティックをキーボードとマウスのイベントにマッピングします。</string>
+    <string name="nav_home">ホーム</string><string name="nav_mappings">マッピング</string><string name="nav_test">テスト</string><string name="nav_profiles">プロファイル</string><string name="nav_settings">設定</string>
+    <string name="home_service_enabled">マッパー有効</string><string name="home_service_disabled">マッパー無効</string><string name="home_tap_to_enable">タップして有効化</string><string name="home_tap_to_disable">タップして無効化</string>
+    <string name="home_no_controller">コントローラーが検出されません</string><string name="home_active_profile">アクティブプロファイル</string><string name="home_mappings_active">%1$d 個のマッピングが有効</string>
+    <string name="home_analog_warning">アナログスティックにはAndroid 13以降が必要</string><string name="home_accessibility_off">アクセシビリティ権限が必要</string><string name="home_grant_permission">権限を付与</string>
+    <string name="onboarding_title_1">Any Mapperへようこそ</string><string name="onboarding_desc_1">ゲームパッドのボタンとスティックをキーボード・マウスにマッピング。Winlator、GameNative、GameHubに対応。</string>
+    <string name="onboarding_title_2">アクセシビリティ権限を付与</string><string name="onboarding_desc_2">バックグラウンドでコントローラー入力を傍受するためにアクセシビリティサービスが必要です。</string><string name="onboarding_grant">アクセシビリティ設定を開く</string>
+    <string name="onboarding_title_3">コントローラーを接続</string><string name="onboarding_desc_3">BluetoothまたはUSB OTGゲームパッドを接続してください。</string><string name="onboarding_finish">始める</string><string name="onboarding_skip">スキップ</string><string name="onboarding_next">次へ</string>
+    <string name="mappings_title">マッピング</string><string name="mappings_empty">マッピングなし。\n+をタップして追加。</string><string name="mappings_section_buttons">ボタン</string><string name="mappings_section_axes">アナログスティック</string>
+    <string name="mappings_add">マッピングを追加</string><string name="mappings_delete_confirm">マッピングを削除?</string><string name="mappings_deleted">マッピングを削除しました</string><string name="mappings_undo">元に戻す</string>
+    <string name="editor_title_new">新しいマッピング</string><string name="editor_title_edit">マッピングを編集</string><string name="editor_step1_title">ボタンを押す</string><string name="editor_step1_desc">コントローラーのボタンを押すかスティックを動かしてください</string><string name="editor_step1_waiting">入力を待っています…</string>
+    <string name="editor_step2_title">ターゲットを選択</string><string name="editor_step2_key">キーボードキー</string><string name="editor_step2_mouse">マウス操作</string><string name="editor_step3_title">設定</string>
+    <string name="editor_label_hint">ラベル (任意)</string><string name="editor_deadzone">デッドゾーン</string><string name="editor_sensitivity">感度</string>
+    <string name="editor_hold_behavior">ホールド動作</string><string name="editor_hold_held">保持</string><string name="editor_hold_toggle">トグル</string><string name="editor_hold_single">シングルショット</string>
+    <string name="editor_curve">レスポンスカーブ</string><string name="editor_curve_linear">リニア</string><string name="editor_curve_quadratic">二次</string><string name="editor_curve_cubic">三次</string>
+    <string name="editor_save">保存</string><string name="editor_cancel">キャンセル</string>
+    <string name="test_title">コントローラーテスト</string><string name="test_no_controller">テストするコントローラーを接続してください</string><string name="test_mapped_to">マッピング先: %1$s</string><string name="test_not_mapped">未マッピング</string><string name="test_reset_cursor">カーソルをリセット</string>
+    <string name="profiles_title">プロファイル</string><string name="profiles_new">新しいプロファイル</string><string name="profiles_name_hint">プロファイル名</string><string name="profiles_auto_activate">自動起動: %1$s</string>
+    <string name="profiles_set_package">自動起動アプリを設定</string><string name="profiles_package_hint">パッケージ名 (例: com.winlator)</string><string name="profiles_rename">名前変更</string><string name="profiles_duplicate">複製</string><string name="profiles_delete">削除</string>
+    <string name="profiles_delete_confirm">プロファイル\"%1$s\"を削除?</string><string name="profiles_active">アクティブ</string><string name="profiles_empty">プロファイルなし。\n+をタップ。</string>
+    <string name="settings_title">設定</string><string name="settings_mouse_section">マウス</string><string name="settings_mouse_mode">マウス注入モード</string><string name="settings_mouse_mode_touch">タッチモード</string><string name="settings_mouse_mode_mouse">マウスモード</string>
+    <string name="settings_mouse_mode_desc">タッチ: ジェスチャー。マウス: ハードウェアイベント(Wine向け)。</string><string name="settings_default_sensitivity">デフォルト感度</string><string name="settings_default_deadzone">デフォルトデッドゾーン</string>
+    <string name="settings_service_section">サービス</string><string name="settings_start_on_boot">起動時に開始</string><string name="settings_vibrate_on_map">マッピング時に振動</string>
+    <string name="settings_display_section">表示</string><string name="settings_theme">テーマ</string><string name="settings_language">言語</string>
+    <string name="settings_compat_section">クイックセットアップ</string><string name="settings_compat_desc">人気Wineアプリ用プロファイルを作成</string><string name="settings_compat_winlator">Winlator FPSプロファイルを作成</string>
+    <string name="settings_about_section">について</string><string name="settings_version">バージョン %1$s</string>
+    <string name="notification_title">Any Mapper</string><string name="notification_active">有効 — %1$s</string><string name="notification_disabled">無効</string><string name="notification_action_disable">無効化</string><string name="notification_action_enable">有効化</string>
+    <string name="ok">OK</string><string name="cancel">キャンセル</string><string name="save">保存</string><string name="delete">削除</string><string name="enable">有効化</string><string name="disable">無効化</string>
+    <string name="rename">名前変更</string><string name="duplicate">複製</string><string name="yes">はい</string><string name="no">いいえ</string><string name="arrow">→</string><string name="unknown">不明</string>
+</resources>

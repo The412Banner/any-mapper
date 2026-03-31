@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Сервис Any Mapper</string>
+    <string name="accessibility_service_description">Any Mapper перехватывает ввод контроллера и переназначает кнопки на клавиатуру и мышь.</string>
+    <string name="nav_home">Главная</string><string name="nav_mappings">Маппинги</string><string name="nav_test">Тест</string><string name="nav_profiles">Профили</string><string name="nav_settings">Настройки</string>
+    <string name="home_service_enabled">Маппер включён</string><string name="home_service_disabled">Маппер выключен</string><string name="home_tap_to_enable">Нажмите для включения</string><string name="home_tap_to_disable">Нажмите для выключения</string>
+    <string name="home_no_controller">Контроллер не обнаружен</string><string name="home_active_profile">Активный профиль</string><string name="home_mappings_active">Активных маппингов: %1$d</string>
+    <string name="home_analog_warning">Аналоговые стики требуют Android 13+</string><string name="home_accessibility_off">Требуется разрешение специальных возможностей</string><string name="home_grant_permission">Предоставить разрешение</string>
+    <string name="onboarding_title_1">Добро пожаловать в Any Mapper</string><string name="onboarding_desc_1">Назначьте кнопки и стики геймпада клавишам клавиатуры или мыши. Работает с Winlator, GameNative и GameHub.</string>
+    <string name="onboarding_title_2">Предоставить разрешение специальных возможностей</string><string name="onboarding_desc_2">Any Mapper требует сервис специальных возможностей для перехвата ввода в фоне.</string><string name="onboarding_grant">Открыть настройки специальных возможностей</string>
+    <string name="onboarding_title_3">Подключите контроллер</string><string name="onboarding_desc_3">Подключите Bluetooth или USB OTG геймпад. Совместим с Xbox, PlayStation и универсальными контроллерами.</string><string name="onboarding_finish">Начать</string><string name="onboarding_skip">Пропустить</string><string name="onboarding_next">Далее</string>
+    <string name="mappings_title">Маппинги</string><string name="mappings_empty">Нет маппингов.\nНажмите + для добавления.</string><string name="mappings_section_buttons">Кнопки</string><string name="mappings_section_axes">Аналоговые стики</string>
+    <string name="mappings_add">Добавить маппинг</string><string name="mappings_delete_confirm">Удалить маппинг?</string><string name="mappings_deleted">Маппинг удалён</string><string name="mappings_undo">Отмена</string>
+    <string name="editor_title_new">Новый маппинг</string><string name="editor_title_edit">Редактировать маппинг</string><string name="editor_step1_title">Нажмите кнопку</string><string name="editor_step1_desc">Нажмите любую кнопку или двиньте стик</string><string name="editor_step1_waiting">Ожидание ввода…</string>
+    <string name="editor_step2_title">Выбрать цель</string><string name="editor_step2_key">Клавиша клавиатуры</string><string name="editor_step2_mouse">Действие мыши</string><string name="editor_step3_title">Настройка</string>
+    <string name="editor_label_hint">Метка (необязательно)</string><string name="editor_deadzone">Мёртвая зона</string><string name="editor_sensitivity">Чувствительность</string>
+    <string name="editor_hold_behavior">Поведение удержания</string><string name="editor_hold_held">Удержание</string><string name="editor_hold_toggle">Переключение</string><string name="editor_hold_single">Одиночный выстрел</string>
+    <string name="editor_curve">Кривая отклика</string><string name="editor_curve_linear">Линейная</string><string name="editor_curve_quadratic">Квадратичная</string><string name="editor_curve_cubic">Кубическая</string>
+    <string name="editor_save">Сохранить</string><string name="editor_cancel">Отмена</string>
+    <string name="test_title">Тест контроллера</string><string name="test_no_controller">Подключите контроллер для тестирования</string><string name="test_mapped_to">Назначено: %1$s</string><string name="test_not_mapped">Не назначено</string><string name="test_reset_cursor">Сбросить курсор</string>
+    <string name="profiles_title">Профили</string><string name="profiles_new">Новый профиль</string><string name="profiles_name_hint">Название профиля</string><string name="profiles_auto_activate">Автоактивация для: %1$s</string>
+    <string name="profiles_set_package">Задать приложение автоактивации</string><string name="profiles_package_hint">Имя пакета (напр. com.winlator)</string><string name="profiles_rename">Переименовать</string><string name="profiles_duplicate">Дублировать</string><string name="profiles_delete">Удалить</string>
+    <string name="profiles_delete_confirm">Удалить профиль \"%1$s\"?</string><string name="profiles_active">Активный</string><string name="profiles_empty">Нет профилей.\nНажмите +.</string>
+    <string name="settings_title">Настройки</string><string name="settings_mouse_section">Мышь</string><string name="settings_mouse_mode">Режим инъекции мыши</string><string name="settings_mouse_mode_touch">Сенсорный режим</string><string name="settings_mouse_mode_mouse">Режим мыши</string>
+    <string name="settings_mouse_mode_desc">Сенсорный: жесты. Мышь: аппаратные события (лучше для Wine).</string><string name="settings_default_sensitivity">Чувствительность по умолчанию</string><string name="settings_default_deadzone">Мёртвая зона по умолчанию</string>
+    <string name="settings_service_section">Сервис</string><string name="settings_start_on_boot">Запуск при загрузке</string><string name="settings_vibrate_on_map">Вибрация при срабатывании</string>
+    <string name="settings_display_section">Отображение</string><string name="settings_theme">Тема</string><string name="settings_language">Язык</string>
+    <string name="settings_compat_section">Быстрая настройка</string><string name="settings_compat_desc">Создать предустановленные профили для Wine-приложений</string><string name="settings_compat_winlator">Создать профиль FPS Winlator</string>
+    <string name="settings_about_section">О приложении</string><string name="settings_version">Версия %1$s</string>
+    <string name="notification_title">Any Mapper</string><string name="notification_active">Активен — %1$s</string><string name="notification_disabled">Отключён</string><string name="notification_action_disable">Отключить</string><string name="notification_action_enable">Включить</string>
+    <string name="ok">ОК</string><string name="cancel">Отмена</string><string name="save">Сохранить</string><string name="delete">Удалить</string><string name="enable">Включить</string><string name="disable">Отключить</string>
+    <string name="rename">Переименовать</string><string name="duplicate">Дублировать</string><string name="yes">Да</string><string name="no">Нет</string><string name="arrow">→</string><string name="unknown">Неизвестно</string>
+</resources>

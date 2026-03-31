@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Any Mapper 컨트롤러 서비스</string>
+    <string name="accessibility_service_description">Any Mapper는 컨트롤러 입력을 가로채어 버튼과 아날로그 스틱을 키보드 및 마우스 이벤트로 매핑합니다.</string>
+    <string name="nav_home">홈</string><string name="nav_mappings">매핑</string><string name="nav_test">테스트</string><string name="nav_profiles">프로필</string><string name="nav_settings">설정</string>
+    <string name="home_service_enabled">매퍼 활성화</string><string name="home_service_disabled">매퍼 비활성화</string><string name="home_tap_to_enable">탭하여 활성화</string><string name="home_tap_to_disable">탭하여 비활성화</string>
+    <string name="home_no_controller">컨트롤러가 감지되지 않음</string><string name="home_active_profile">활성 프로필</string><string name="home_mappings_active">%1$d개 매핑 활성화</string>
+    <string name="home_analog_warning">아날로그 스틱 매핑은 Android 13+ 필요</string><string name="home_accessibility_off">접근성 권한 필요</string><string name="home_grant_permission">권한 부여</string>
+    <string name="onboarding_title_1">Any Mapper에 오신 것을 환영합니다</string><string name="onboarding_desc_1">게임패드 버튼과 스틱을 키보드 또는 마우스에 매핑하세요. Winlator, GameNative, GameHub 호환.</string>
+    <string name="onboarding_title_2">접근성 권한 부여</string><string name="onboarding_desc_2">백그라운드에서 컨트롤러 입력을 가로채기 위해 접근성 서비스 권한이 필요합니다.</string><string name="onboarding_grant">접근성 설정 열기</string>
+    <string name="onboarding_title_3">컨트롤러 연결</string><string name="onboarding_desc_3">Bluetooth 또는 USB OTG 게임패드를 연결하세요. Xbox, PlayStation, 일반 컨트롤러 지원.</string><string name="onboarding_finish">시작</string><string name="onboarding_skip">건너뛰기</string><string name="onboarding_next">다음</string>
+    <string name="mappings_title">매핑</string><string name="mappings_empty">매핑 없음.\n+를 탭하여 추가하세요.</string><string name="mappings_section_buttons">버튼</string><string name="mappings_section_axes">아날로그 스틱</string>
+    <string name="mappings_add">매핑 추가</string><string name="mappings_delete_confirm">매핑을 삭제하시겠습니까?</string><string name="mappings_deleted">매핑 삭제됨</string><string name="mappings_undo">실행 취소</string>
+    <string name="editor_title_new">새 매핑</string><string name="editor_title_edit">매핑 편집</string><string name="editor_step1_title">버튼 누르기</string><string name="editor_step1_desc">컨트롤러의 버튼을 누르거나 스틱을 움직이세요</string><string name="editor_step1_waiting">입력 대기 중…</string>
+    <string name="editor_step2_title">대상 선택</string><string name="editor_step2_key">키보드 키</string><string name="editor_step2_mouse">마우스 동작</string><string name="editor_step3_title">설정</string>
+    <string name="editor_label_hint">레이블 (선택사항)</string><string name="editor_deadzone">데드존</string><string name="editor_sensitivity">감도</string>
+    <string name="editor_hold_behavior">누름 동작</string><string name="editor_hold_held">유지</string><string name="editor_hold_toggle">토글</string><string name="editor_hold_single">단발</string>
+    <string name="editor_curve">응답 곡선</string><string name="editor_curve_linear">선형</string><string name="editor_curve_quadratic">이차</string><string name="editor_curve_cubic">삼차</string>
+    <string name="editor_save">저장</string><string name="editor_cancel">취소</string>
+    <string name="test_title">컨트롤러 테스트</string><string name="test_no_controller">테스트하려면 컨트롤러를 연결하세요</string><string name="test_mapped_to">매핑됨: %1$s</string><string name="test_not_mapped">매핑 없음</string><string name="test_reset_cursor">커서 초기화</string>
+    <string name="profiles_title">프로필</string><string name="profiles_new">새 프로필</string><string name="profiles_name_hint">프로필 이름</string><string name="profiles_auto_activate">자동 활성화: %1$s</string>
+    <string name="profiles_set_package">자동 활성화 앱 설정</string><string name="profiles_package_hint">패키지 이름 (예: com.winlator)</string><string name="profiles_rename">이름 변경</string><string name="profiles_duplicate">복제</string><string name="profiles_delete">삭제</string>
+    <string name="profiles_delete_confirm">프로필 \"%1$s\"를 삭제하시겠습니까?</string><string name="profiles_active">활성</string><string name="profiles_empty">프로필 없음.\n+를 탭하세요.</string>
+    <string name="settings_title">설정</string><string name="settings_mouse_section">마우스</string><string name="settings_mouse_mode">마우스 주입 모드</string><string name="settings_mouse_mode_touch">터치 모드</string><string name="settings_mouse_mode_mouse">마우스 모드</string>
+    <string name="settings_mouse_mode_desc">터치: 제스처. 마우스: 하드웨어 이벤트 (Wine에 적합).</string><string name="settings_default_sensitivity">기본 감도</string><string name="settings_default_deadzone">기본 데드존</string>
+    <string name="settings_service_section">서비스</string><string name="settings_start_on_boot">부팅 시 시작</string><string name="settings_vibrate_on_map">매핑 실행 시 진동</string>
+    <string name="settings_display_section">디스플레이</string><string name="settings_theme">테마</string><string name="settings_language">언어</string>
+    <string name="settings_compat_section">빠른 설정</string><string name="settings_compat_desc">인기 Wine 앱용 프로필 생성</string><string name="settings_compat_winlator">Winlator FPS 프로필 생성</string>
+    <string name="settings_about_section">정보</string><string name="settings_version">버전 %1$s</string>
+    <string name="notification_title">Any Mapper</string><string name="notification_active">활성 — %1$s</string><string name="notification_disabled">비활성화</string><string name="notification_action_disable">비활성화</string><string name="notification_action_enable">활성화</string>
+    <string name="ok">확인</string><string name="cancel">취소</string><string name="save">저장</string><string name="delete">삭제</string><string name="enable">활성화</string><string name="disable">비활성화</string>
+    <string name="rename">이름 변경</string><string name="duplicate">복제</string><string name="yes">예</string><string name="no">아니오</string><string name="arrow">→</string><string name="unknown">알 수 없음</string>
+</resources>

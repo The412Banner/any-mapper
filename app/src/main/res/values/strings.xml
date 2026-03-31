@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Any Mapper Controller Service</string>
+    <string name="accessibility_service_description">Any Mapper intercepts controller input and remaps buttons and analog sticks to keyboard and mouse events for use with Wine-based gaming apps.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_mappings">Mappings</string>
+    <string name="nav_test">Test</string>
+    <string name="nav_profiles">Profiles</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home Screen -->
+    <string name="home_service_enabled">Mapper Active</string>
+    <string name="home_service_disabled">Mapper Off</string>
+    <string name="home_tap_to_enable">Tap to enable</string>
+    <string name="home_tap_to_disable">Tap to disable</string>
+    <string name="home_no_controller">No controller detected</string>
+    <string name="home_controller_connected">%1$s connected</string>
+    <string name="home_active_profile">Active Profile</string>
+    <string name="home_mappings_active">%1$d mappings active</string>
+    <string name="home_analog_warning">Analog stick mapping requires Android 13+</string>
+    <string name="home_accessibility_off">Accessibility permission required</string>
+    <string name="home_grant_permission">Grant Permission</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Welcome to Any Mapper</string>
+    <string name="onboarding_desc_1">Map any gamepad button or analog stick to keyboard keys or mouse actions. Works with Winlator, GameNative, and GameHub.</string>
+    <string name="onboarding_title_2">Grant Accessibility Permission</string>
+    <string name="onboarding_desc_2">Any Mapper needs Accessibility Service permission to intercept controller input in the background. No personal data is collected.</string>
+    <string name="onboarding_grant">Open Accessibility Settings</string>
+    <string name="onboarding_waiting">Waiting for permission…</string>
+    <string name="onboarding_title_3">Connect Your Controller</string>
+    <string name="onboarding_desc_3">Connect a Bluetooth or USB OTG gamepad. Any Mapper works with Xbox, PlayStation, and generic controllers.</string>
+    <string name="onboarding_finish">Get Started</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+
+    <!-- Mappings Screen -->
+    <string name="mappings_title">Mappings</string>
+    <string name="mappings_empty">No mappings yet.\nTap + to add your first mapping.</string>
+    <string name="mappings_section_buttons">Buttons</string>
+    <string name="mappings_section_axes">Analog Sticks</string>
+    <string name="mappings_section_mouse">Mouse</string>
+    <string name="mappings_add">Add Mapping</string>
+    <string name="mappings_delete_confirm">Delete mapping?</string>
+    <string name="mappings_deleted">Mapping deleted</string>
+    <string name="mappings_undo">Undo</string>
+
+    <!-- Mapping Editor -->
+    <string name="editor_title_new">New Mapping</string>
+    <string name="editor_title_edit">Edit Mapping</string>
+    <string name="editor_step1_title">Press a button</string>
+    <string name="editor_step1_desc">Press any button or move any stick on your controller</string>
+    <string name="editor_step1_waiting">Waiting for input…</string>
+    <string name="editor_step2_title">Choose target</string>
+    <string name="editor_step2_key">Keyboard Key</string>
+    <string name="editor_step2_mouse">Mouse Action</string>
+    <string name="editor_step3_title">Configure</string>
+    <string name="editor_label_hint">Label (optional)</string>
+    <string name="editor_deadzone">Dead Zone</string>
+    <string name="editor_sensitivity">Sensitivity</string>
+    <string name="editor_hold_behavior">Hold Behavior</string>
+    <string name="editor_hold_held">Held</string>
+    <string name="editor_hold_toggle">Toggle</string>
+    <string name="editor_hold_single">Single Shot</string>
+    <string name="editor_curve">Response Curve</string>
+    <string name="editor_curve_linear">Linear</string>
+    <string name="editor_curve_quadratic">Quadratic</string>
+    <string name="editor_curve_cubic">Cubic</string>
+    <string name="editor_device_any">Any Controller</string>
+    <string name="editor_save">Save</string>
+    <string name="editor_cancel">Cancel</string>
+
+    <!-- Controller Test -->
+    <string name="test_title">Controller Test</string>
+    <string name="test_no_controller">Connect a controller to begin testing</string>
+    <string name="test_mapped_to">Mapped to: %1$s</string>
+    <string name="test_not_mapped">Not mapped</string>
+    <string name="test_reset_cursor">Reset Cursor</string>
+
+    <!-- Profiles -->
+    <string name="profiles_title">Profiles</string>
+    <string name="profiles_new">New Profile</string>
+    <string name="profiles_name_hint">Profile name</string>
+    <string name="profiles_auto_activate">Auto-activates for: %1$s</string>
+    <string name="profiles_set_package">Set auto-activate app</string>
+    <string name="profiles_package_hint">Package name (e.g. com.winlator)</string>
+    <string name="profiles_rename">Rename</string>
+    <string name="profiles_duplicate">Duplicate</string>
+    <string name="profiles_delete">Delete</string>
+    <string name="profiles_delete_confirm">Delete profile \"%1$s\"? All its mappings will be deleted.</string>
+    <string name="profiles_active">Active</string>
+    <string name="profiles_empty">No profiles.\nTap + to create your first profile.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_mouse_section">Mouse</string>
+    <string name="settings_mouse_mode">Mouse Injection Mode</string>
+    <string name="settings_mouse_mode_touch">Touch Mode</string>
+    <string name="settings_mouse_mode_mouse">Mouse Mode</string>
+    <string name="settings_mouse_mode_desc">Touch: uses gesture dispatch. Mouse: injects hardware mouse events (better for Wine).</string>
+    <string name="settings_default_sensitivity">Default Sensitivity</string>
+    <string name="settings_default_deadzone">Default Dead Zone</string>
+    <string name="settings_service_section">Service</string>
+    <string name="settings_start_on_boot">Start on boot</string>
+    <string name="settings_vibrate_on_map">Vibrate on mapping fire</string>
+    <string name="settings_display_section">Display</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_compat_section">Quick Setup</string>
+    <string name="settings_compat_desc">Create pre-configured profiles for popular Wine apps</string>
+    <string name="settings_compat_winlator">Create Winlator FPS Profile</string>
+    <string name="settings_compat_gamenative">Create GameNative Profile</string>
+    <string name="settings_compat_gamehub">Create GameHub Profile</string>
+    <string name="settings_about_section">About</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_github">GitHub</string>
+    <string name="settings_licenses">Open Source Licenses</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">Mapper Service</string>
+    <string name="notification_channel_desc">Any Mapper background service status</string>
+    <string name="notification_title">Any Mapper</string>
+    <string name="notification_active">Active — %1$s</string>
+    <string name="notification_disabled">Disabled</string>
+    <string name="notification_action_disable">Disable</string>
+    <string name="notification_action_enable">Enable</string>
+
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="rename">Rename</string>
+    <string name="duplicate">Duplicate</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="arrow">→</string>
+    <string name="unknown">Unknown</string>
+</resources>

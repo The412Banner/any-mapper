@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Any Mapper</string>
+    <string name="accessibility_service_label">Any Mapper Controller-Dienst</string>
+    <string name="accessibility_service_description">Any Mapper fängt Controller-Eingaben ab und ordnet Tasten Tastatur- und Mausereignissen zu.</string>
+    <string name="nav_home">Start</string><string name="nav_mappings">Belegungen</string><string name="nav_test">Test</string><string name="nav_profiles">Profile</string><string name="nav_settings">Einstellungen</string>
+    <string name="home_service_enabled">Mapper Aktiv</string><string name="home_service_disabled">Mapper Aus</string><string name="home_tap_to_enable">Tippen zum Aktivieren</string><string name="home_tap_to_disable">Tippen zum Deaktivieren</string>
+    <string name="home_no_controller">Kein Controller erkannt</string><string name="home_active_profile">Aktives Profil</string><string name="home_mappings_active">%1$d Belegungen aktiv</string>
+    <string name="home_analog_warning">Analogstick erfordert Android 13+</string><string name="home_accessibility_off">Barrierefreiheitsberechtigung erforderlich</string><string name="home_grant_permission">Berechtigung erteilen</string>
+    <string name="onboarding_title_1">Willkommen bei Any Mapper</string><string name="onboarding_desc_1">Tasten und Sticks Tastatur-/Mausfunktionen zuweisen. Für Winlator, GameNative und GameHub.</string>
+    <string name="onboarding_title_2">Barrierefreiheit erlauben</string><string name="onboarding_desc_2">Any Mapper benötigt Barrierefreiheitsberechtigung.</string><string name="onboarding_grant">Einstellungen öffnen</string>
+    <string name="onboarding_title_3">Controller verbinden</string><string name="onboarding_desc_3">Bluetooth- oder USB-OTG-Controller verbinden.</string><string name="onboarding_finish">Loslegen</string><string name="onboarding_skip">Überspringen</string><string name="onboarding_next">Weiter</string>
+    <string name="mappings_title">Belegungen</string><string name="mappings_empty">Keine Belegungen.\nTippen Sie + um eine hinzuzufügen.</string><string name="mappings_section_buttons">Tasten</string><string name="mappings_section_axes">Analogsticks</string>
+    <string name="mappings_add">Belegung hinzufügen</string><string name="mappings_delete_confirm">Belegung löschen?</string><string name="mappings_deleted">Belegung gelöscht</string><string name="mappings_undo">Rückgängig</string>
+    <string name="editor_title_new">Neue Belegung</string><string name="editor_title_edit">Belegung bearbeiten</string><string name="editor_step1_title">Taste drücken</string><string name="editor_step1_desc">Drücken Sie eine Taste oder bewegen Sie einen Stick</string><string name="editor_step1_waiting">Warte auf Eingabe…</string>
+    <string name="editor_step2_title">Ziel wählen</string><string name="editor_step2_key">Tastaturtaste</string><string name="editor_step2_mouse">Mausaktion</string><string name="editor_step3_title">Konfigurieren</string>
+    <string name="editor_label_hint">Bezeichnung (optional)</string><string name="editor_deadzone">Toter Bereich</string><string name="editor_sensitivity">Empfindlichkeit</string>
+    <string name="editor_hold_behavior">Halteaktion</string><string name="editor_hold_held">Gehalten</string><string name="editor_hold_toggle">Umschalten</string><string name="editor_hold_single">Einmalig</string>
+    <string name="editor_curve">Reaktionskurve</string><string name="editor_curve_linear">Linear</string><string name="editor_curve_quadratic">Quadratisch</string><string name="editor_curve_cubic">Kubisch</string>
+    <string name="editor_save">Speichern</string><string name="editor_cancel">Abbrechen</string>
+    <string name="test_title">Controller-Test</string><string name="test_no_controller">Controller verbinden um zu testen</string><string name="test_mapped_to">Belegt mit: %1$s</string><string name="test_not_mapped">Nicht belegt</string><string name="test_reset_cursor">Cursor zurücksetzen</string>
+    <string name="profiles_title">Profile</string><string name="profiles_new">Neues Profil</string><string name="profiles_name_hint">Profilname</string><string name="profiles_auto_activate">Auto-Aktivierung für: %1$s</string>
+    <string name="profiles_set_package">Auto-Aktivierungs-App</string><string name="profiles_package_hint">Paketname (z.B. com.winlator)</string><string name="profiles_rename">Umbenennen</string><string name="profiles_duplicate">Duplizieren</string><string name="profiles_delete">Löschen</string>
+    <string name="profiles_delete_confirm">Profil \"%1$s\" löschen?</string><string name="profiles_active">Aktiv</string><string name="profiles_empty">Keine Profile.\nTippen Sie +.</string>
+    <string name="settings_title">Einstellungen</string><string name="settings_mouse_section">Maus</string><string name="settings_mouse_mode">Maus-Modus</string><string name="settings_mouse_mode_touch">Touch</string><string name="settings_mouse_mode_mouse">Maus</string>
+    <string name="settings_mouse_mode_desc">Touch: Gesten. Maus: Hardware-Events (besser für Wine).</string><string name="settings_default_sensitivity">Standardempfindlichkeit</string><string name="settings_default_deadzone">Standard toter Bereich</string>
+    <string name="settings_service_section">Dienst</string><string name="settings_start_on_boot">Beim Systemstart starten</string><string name="settings_vibrate_on_map">Vibrieren bei Auslösung</string>
+    <string name="settings_display_section">Anzeige</string><string name="settings_theme">Thema</string><string name="settings_language">Sprache</string>
+    <string name="settings_compat_section">Schnelleinrichtung</string><string name="settings_compat_desc">Vorkonfigurierte Profile erstellen</string><string name="settings_compat_winlator">Winlator FPS-Profil erstellen</string>
+    <string name="settings_about_section">Über</string><string name="settings_version">Version %1$s</string>
+    <string name="notification_title">Any Mapper</string><string name="notification_active">Aktiv — %1$s</string><string name="notification_disabled">Deaktiviert</string><string name="notification_action_disable">Deaktivieren</string><string name="notification_action_enable">Aktivieren</string>
+    <string name="ok">OK</string><string name="cancel">Abbrechen</string><string name="save">Speichern</string><string name="delete">Löschen</string><string name="enable">Aktivieren</string><string name="disable">Deaktivieren</string>
+    <string name="rename">Umbenennen</string><string name="duplicate">Duplizieren</string><string name="yes">Ja</string><string name="no">Nein</string><string name="arrow">→</string><string name="unknown">Unbekannt</string>
+</resources>

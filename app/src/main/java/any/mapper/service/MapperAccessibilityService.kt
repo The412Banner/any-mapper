@@ -49,7 +49,8 @@ class MapperAccessibilityService : AccessibilityService() {
         super.onServiceConnected()
         instance = this
         setupNotificationChannel()
-        startForeground(NOTIFICATION_ID, buildNotification())
+        getSystemService(NotificationManager::class.java)
+            .notify(NOTIFICATION_ID, buildNotification())
         loadMappings()
         mouseCursorManager.start()
     }

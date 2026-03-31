@@ -2,9 +2,12 @@
 package any.mapper.ui.screens
 
 
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -22,6 +25,8 @@ import any.mapper.R
 import any.mapper.data.model.Profile
 import any.mapper.ui.viewmodel.MappingViewModel
 
+data class AppInfo(val label: String, val packageName: String)
+
 @Composable
 fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
     val context = LocalContext.current
@@ -36,12 +41,39 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
     var showFabMenu by remember { mutableStateOf(false) }
     var importError by remember { mutableStateOf<String?>(null) }
 
+    // ICP import state
+    var pendingIcpJson by remember { mutableStateOf<String?>(null) }
+    var showAppPicker by remember { mutableStateOf(false) }
+    var appPickerSearch by remember { mutableStateOf("") }
+
+    // Load installed launchable apps lazily when picker is shown
+    val installedApps = remember(showAppPicker) {
+        if (!showAppPicker) emptyList()
+        else {
+            val pm = context.packageManager
+            val intent = android.content.Intent(android.content.Intent.ACTION_MAIN).apply {
+                addCategory(android.content.Intent.CATEGORY_LAUNCHER)
+            }
+            pm.queryIntentActivities(intent, 0)
+                .map { ri ->
+                    AppInfo(
+                        label = ri.loadLabel(pm).toString(),
+                        packageName = ri.activityInfo.packageName
+                    )
+                }
+                .distinctBy { it.packageName }
+                .sortedBy { it.label.lowercase() }
+        }
+    }
+
     val icpPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
             try {
                 val json = context.contentResolver.openInputStream(uri)
                     ?.bufferedReader()?.readText() ?: return@rememberLauncherForActivityResult
-                vm.importFromIcp(json)
+                pendingIcpJson = json
+                appPickerSearch = ""
+                showAppPicker = true
                 showFabMenu = false
             } catch (e: Exception) {
                 importError = e.message ?: "Failed to read file"
@@ -54,7 +86,7 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
             Column(horizontalAlignment = Alignment.End) {
                 if (showFabMenu) {
                     SmallFloatingActionButton(
-                        onClick = { icpPicker.launch("*/*"); showFabMenu = false },
+                        onClick = { icpPicker.launch("*/*") },
                         containerColor = MaterialTheme.colorScheme.secondaryContainer
                     ) {
                         Row(
@@ -114,6 +146,65 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
                 }
             }
         }
+    }
+
+    // App picker dialog after ICP file is loaded
+    if (showAppPicker) {
+        val filtered = installedApps.filter {
+            appPickerSearch.isBlank() ||
+            it.label.contains(appPickerSearch, ignoreCase = true) ||
+            it.packageName.contains(appPickerSearch, ignoreCase = true)
+        }
+        AlertDialog(
+            onDismissRequest = { showAppPicker = false; pendingIcpJson = null },
+            title = { Text("Select app to activate for") },
+            text = {
+                Column {
+                    OutlinedTextField(
+                        value = appPickerSearch,
+                        onValueChange = { appPickerSearch = it },
+                        label = { Text("Search") },
+                        leadingIcon = { Icon(Icons.Default.Search, null) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    LazyColumn(modifier = Modifier.heightIn(max = 320.dp)) {
+                        items(filtered) { app ->
+                            ListItem(
+                                headlineContent = { Text(app.label) },
+                                supportingContent = {
+                                    Text(app.packageName,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                },
+                                modifier = Modifier.fillMaxWidth().clickable {
+                                    pendingIcpJson?.let { vm.importFromIcp(it, app.packageName) }
+                                    showAppPicker = false
+                                    pendingIcpJson = null
+                                }
+                            )
+                            HorizontalDivider()
+                        }
+                        item {
+                            TextButton(
+                                onClick = {
+                                    pendingIcpJson?.let { vm.importFromIcp(it, null) }
+                                    showAppPicker = false; pendingIcpJson = null
+                                },
+                                modifier = Modifier.fillMaxWidth()
+                            ) { Text("Skip — no auto-activate") }
+                        }
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = {
+                TextButton(onClick = { showAppPicker = false; pendingIcpJson = null }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
     }
 
     if (showNewDialog) {

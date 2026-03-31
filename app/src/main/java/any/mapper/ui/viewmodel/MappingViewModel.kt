@@ -45,9 +45,9 @@ class MappingViewModel @Inject constructor(
         repository.duplicateProfile(profileId, newName)
     }
 
-    fun importFromIcp(json: String) = viewModelScope.launch {
+    fun importFromIcp(json: String, packageName: String? = null) = viewModelScope.launch {
         val result = IcpImporter.parse(json)
-        repository.createQuickSetupProfile(result.profileName, null, result.mappings)
+        repository.createQuickSetupProfile(result.profileName, packageName, result.mappings)
     }
 
     fun quickMapStickToMouse(rightStick: Boolean) = viewModelScope.launch {

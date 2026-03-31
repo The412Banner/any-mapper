@@ -145,9 +145,12 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
                     OutlinedTextField(value = packageName, onValueChange = { packageName = it },
                         label = { Text(stringResource(R.string.profiles_package_hint)) }, singleLine = true)
                     Text("Common packages:", style = MaterialTheme.typography.labelSmall)
-                    listOf("Winlator" to "com.winlator",
-                           "BannerHub" to "banner.hub",
-                           "GHL" to "gamehub.lite").forEach { (name, pkg) ->
+                    listOf(
+                        "Winlator" to "com.winlator",
+                        "Winlator (Ludashi)" to "com.ludashi.benchmark",
+                        "BannerHub" to "banner.hub",
+                        "GHL" to "gamehub.lite"
+                    ).forEach { (name, pkg) ->
                         FilterChip(selected = packageName == pkg, onClick = { packageName = pkg },
                             label = { Text("$name ($pkg)") })
                     }

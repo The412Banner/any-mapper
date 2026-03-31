@@ -40,6 +40,7 @@ class MapperAccessibilityService : AccessibilityService() {
     companion object {
         var instance: MapperAccessibilityService? = null
         val detectedInputFlow = MutableSharedFlow<Pair<Int, SourceType>>(extraBufferCapacity = 1)
+        var isListeningForInput = false
         const val ACTION_TOGGLE = "any.mapper.ACTION_TOGGLE"
         const val NOTIFICATION_ID = 1
         const val CHANNEL_ID = "mapper_service"
@@ -69,12 +70,17 @@ class MapperAccessibilityService : AccessibilityService() {
     }
 
     override fun onKeyEvent(event: KeyEvent): Boolean {
-        if (!isEnabled) return false
-
-        // Broadcast for mapping editor detection
-        scope.launch {
-            detectedInputFlow.emit(event.keyCode to SourceType.BUTTON)
+        // When mapping editor is listening, capture and consume the event
+        if (isListeningForInput) {
+            if (event.action == KeyEvent.ACTION_DOWN) {
+                scope.launch {
+                    detectedInputFlow.emit(event.keyCode to SourceType.BUTTON)
+                }
+            }
+            return true
         }
+
+        if (!isEnabled) return false
 
         val mapping = activeMappings.firstOrNull {
             it.sourceType == SourceType.BUTTON && it.sourceCode == event.keyCode

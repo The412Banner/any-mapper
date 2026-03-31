@@ -21,6 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import any.mapper.R
 import any.mapper.data.model.*
 import any.mapper.input.KeyCodeHelper
+import any.mapper.service.MapperAccessibilityService
 import any.mapper.ui.viewmodel.MappingViewModel
 import kotlinx.coroutines.flow.first
 
@@ -48,11 +49,17 @@ fun MappingEditorScreen(
     // Listen for detected input from service
     LaunchedEffect(step) {
         if (step == 0) {
+            MapperAccessibilityService.isListeningForInput = true
             val detected = vm.detectedInput.first()
+            MapperAccessibilityService.isListeningForInput = false
             sourceCode = detected.first
             sourceType = detected.second
             step = 1
         }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose { MapperAccessibilityService.isListeningForInput = false }
     }
 
     Scaffold(

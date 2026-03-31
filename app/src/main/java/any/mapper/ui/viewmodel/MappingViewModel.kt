@@ -2,6 +2,7 @@ package any.mapper.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import any.mapper.data.icpimport.IcpImporter
 import any.mapper.data.model.*
 import any.mapper.data.repository.MappingRepository
 import any.mapper.service.MapperAccessibilityService
@@ -42,6 +43,11 @@ class MappingViewModel @Inject constructor(
     fun updateProfile(profile: Profile) = viewModelScope.launch { repository.updateProfile(profile) }
     fun duplicateProfile(profileId: Long, newName: String) = viewModelScope.launch {
         repository.duplicateProfile(profileId, newName)
+    }
+
+    fun importFromIcp(json: String) = viewModelScope.launch {
+        val result = IcpImporter.parse(json)
+        repository.createQuickSetupProfile(result.profileName, null, result.mappings)
     }
 
     fun quickMapStickToMouse(rightStick: Boolean) = viewModelScope.launch {

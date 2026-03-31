@@ -2,6 +2,8 @@
 package any.mapper.ui.screens
 
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,6 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -21,6 +24,7 @@ import any.mapper.ui.viewmodel.MappingViewModel
 
 @Composable
 fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
+    val context = LocalContext.current
     val profiles by vm.allProfiles.collectAsState()
     val activeProfile by vm.activeProfile.collectAsState()
 
@@ -29,14 +33,61 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
     var deletingProfile by remember { mutableStateOf<Profile?>(null) }
     var newName by remember { mutableStateOf("") }
     var packageName by remember { mutableStateOf("") }
+    var showFabMenu by remember { mutableStateOf(false) }
+    var importError by remember { mutableStateOf<String?>(null) }
+
+    val icpPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if (uri != null) {
+            try {
+                val json = context.contentResolver.openInputStream(uri)
+                    ?.bufferedReader()?.readText() ?: return@rememberLauncherForActivityResult
+                vm.importFromIcp(json)
+                showFabMenu = false
+            } catch (e: Exception) {
+                importError = e.message ?: "Failed to read file"
+            }
+        }
+    }
 
     Scaffold(
         floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { newName = ""; showNewDialog = true },
-                icon = { Icon(Icons.Default.Add, null) },
-                text = { Text(stringResource(R.string.profiles_new)) }
-            )
+            Column(horizontalAlignment = Alignment.End) {
+                if (showFabMenu) {
+                    SmallFloatingActionButton(
+                        onClick = { icpPicker.launch("*/*"); showFabMenu = false },
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Default.FileOpen, null, modifier = Modifier.size(18.dp))
+                            Text("Import .icp file", style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    SmallFloatingActionButton(
+                        onClick = { newName = ""; showNewDialog = true; showFabMenu = false },
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Default.Add, null, modifier = Modifier.size(18.dp))
+                            Text("New profile", style = MaterialTheme.typography.labelMedium)
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                }
+                ExtendedFloatingActionButton(
+                    onClick = { showFabMenu = !showFabMenu },
+                    icon = { Icon(if (showFabMenu) Icons.Default.Close else Icons.Default.Add, null) },
+                    text = { Text(if (showFabMenu) "Close" else stringResource(R.string.profiles_new)) }
+                )
+            }
         }
     ) { padding ->
         if (profiles.isEmpty()) {
@@ -56,7 +107,7 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
                         profile = profile,
                         isActive = profile.id == activeProfile?.id,
                         onActivate = { vm.switchProfile(profile.id) },
-                        onEdit = { editingProfile = profile; packageName = profile.autoActivatePackage ?: "" },
+                        onEdit = { editingProfile = profile; newName = profile.name; packageName = profile.autoActivatePackage ?: "" },
                         onDuplicate = { vm.duplicateProfile(profile.id, "${profile.name} (copy)") },
                         onDelete = { deletingProfile = profile }
                     )
@@ -127,6 +178,15 @@ fun ProfileScreen(vm: MappingViewModel = hiltViewModel()) {
                 }
             },
             dismissButton = { TextButton(onClick = { deletingProfile = null }) { Text(stringResource(R.string.cancel)) } }
+        )
+    }
+
+    importError?.let { err ->
+        AlertDialog(
+            onDismissRequest = { importError = null },
+            title = { Text("Import failed") },
+            text = { Text(err) },
+            confirmButton = { TextButton(onClick = { importError = null }) { Text(stringResource(R.string.ok)) } }
         )
     }
 }

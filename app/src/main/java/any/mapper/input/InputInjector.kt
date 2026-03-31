@@ -1,19 +1,24 @@
 package any.mapper.input
 
+import android.content.Context
 import android.hardware.input.InputManager
 import android.os.SystemClock
 import android.view.InputDevice
 import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.MotionEvent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.lang.reflect.Method
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class InputInjector @Inject constructor() {
+class InputInjector @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
 
-    private val inputManager: InputManager = InputManager.getInstance()
+    private val inputManager: InputManager =
+        context.getSystemService(Context.INPUT_SERVICE) as InputManager
     private val injectMethod: Method? = runCatching {
         InputManager::class.java.getMethod("injectInputEvent", android.view.InputEvent::class.java, Int::class.java)
             .also { it.isAccessible = true }

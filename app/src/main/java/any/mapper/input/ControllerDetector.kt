@@ -33,10 +33,10 @@ class ControllerDetector @Inject constructor(
     }
 
     private fun refresh() {
-        _controllers.value = InputDevice.getDeviceIds()
-            .mapNotNull { InputDevice.getDevice(it) }
-            .filter { it.isGamepad() }
-            .map { it.toControllerDevice() }
+        _controllers.value = InputDevice.getDeviceIds().toList()
+            .mapNotNull { id -> InputDevice.getDevice(id) }
+            .filter { device -> device.isGamepad() }
+            .map { device -> device.toControllerDevice() }
     }
 
     private fun InputDevice.isGamepad(): Boolean {

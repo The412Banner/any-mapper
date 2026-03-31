@@ -1,4 +1,6 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.animation.ExperimentalAnimationApi::class)
 package any.mapper.ui.screens
+
 
 import android.content.Intent
 import android.provider.Settings

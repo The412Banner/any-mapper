@@ -1,4 +1,6 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class, androidx.compose.animation.ExperimentalAnimationApi::class)
 package any.mapper.ui.screens
+
 
 import android.os.Build
 import androidx.compose.foundation.layout.*
@@ -74,15 +76,13 @@ fun SettingsScreen(vm: MappingViewModel = hiltViewModel()) {
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Spacer(Modifier.height(12.dp))
-                    listOf(
-                        stringResource(R.string.settings_compat_winlator) to { vm.createQuickWinlatorProfile() },
-                    ).forEach { (label, action) ->
-                        OutlinedButton(onClick = action, modifier = Modifier.fillMaxWidth()) {
-                            Icon(Icons.Default.Add, null)
-                            Spacer(Modifier.width(8.dp))
-                            Text(label)
-                        }
-                        Spacer(Modifier.height(4.dp))
+                    OutlinedButton(
+                        onClick = { vm.createQuickWinlatorProfile() },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(Icons.Default.Add, null)
+                        Spacer(Modifier.width(8.dp))
+                        Text(stringResource(R.string.settings_compat_winlator))
                     }
                 }
             }

@@ -60,7 +60,7 @@ class MappingRepository @Inject constructor(
     suspend fun setMappingEnabled(id: Long, enabled: Boolean) =
         mappingDao.setEnabled(id, enabled)
 
-    suspend fun createQuickSetupProfile(name: String, packageName: String, mappings: List<Mapping>) {
+    suspend fun createQuickSetupProfile(name: String, packageName: String? = null, mappings: List<Mapping>) {
         val id = profileDao.insert(Profile(name = name, autoActivatePackage = packageName))
         mappings.forEach { mappingDao.insert(it.copy(id = 0, profileId = id)) }
     }

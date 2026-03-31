@@ -1,7 +1,7 @@
 # Any Mapper — Progress Log
 
 ## [init] — v1.0.0-pre — Initial project scaffold (2026-03-31)
-**Commit:** TBD | **Tag:** v1.0.0-pre
+**Commit:** `ac8692e` | **Tag:** v1.0.0-pre
 ### What changed
 - Full project scaffold: all phases P0-P5 implemented in initial commit
 - Room DB: Mapping + Profile entities, DAOs, Repository

@@ -18,6 +18,18 @@ android {
         versionName = "1.0.0"
     }
 
+    signingConfigs {
+        create("testkey") {
+            storeFile = file("testkey.jks")
+            storePassword = "testkey123"
+            keyAlias = "testkey"
+            keyPassword = "testkey123"
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -25,12 +37,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Use debug signing config (always available in CI and locally)
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("testkey")
         }
         debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
+            signingConfig = signingConfigs.getByName("testkey")
         }
     }
 
